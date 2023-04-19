@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Get Employee Data</title>
+	<style>
+		form {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+		
+		input[type="text"] {
+			padding: 10px;
+			margin: 10px;
+			border-radius: 5px;
+			border: none;
+			box-shadow: 0 0 5px gray;
+			width: 50%;
+			font-size: 1.2rem;
+		}
+
+		h1 {
+			font-weight: bold;
+			text-align: center;
+		}
+		.validation-error {
+			font-weight: bold;
+			color: red;
+		}
+		input[type="submit"] {
+			padding: 10px;
+			margin: 10px;
+			border-radius: 5px;
+			border: none;
+			box-shadow: 0 0 5px gray;
+			background-color: #4CAF50;
+			color: white;
+			font-size: 1.2rem;
+			cursor: pointer;
+		}
+	</style>
+		<script>
+			function validateForm() {
+				var employeeId = document.forms["employeeForm"]["employee_id"].value;
+				if (employeeId == "") {
+					document.getElementById("validationMessage").innerHTML = "Please enter your ID";
+					return false;
+				}
+			}
+		</script>
+</head>
+<body>
+	<h1>Get Employee Data</h1>
+
+	<form name="employeeForm" method="post" action="/submit-valform" enctype="multipart/form-data" onsubmit="return validateForm()">
+		<label for="employee_id">Enter ID:</label>
+		<input type="text" id="employee_id" name="employee_id" placeholder="Enter your ID">
+		<span class="validation-error" id="validationMessage"></span>
+		<input type="submit" value="Submit your details">
+	</form>
+</body>
+</html>
